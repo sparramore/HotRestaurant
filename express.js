@@ -46,7 +46,7 @@ app.get("/", function(req, res) {
     console.log(customerInformation);
     TablesArray.push(customerInformation);
     console.log(TablesArray);
-    res.json(customerInformation);
+    res.json(TablesArray);
   });
 
   app.post("/api/ReservationArray/", function(req, res) {
@@ -54,7 +54,7 @@ app.get("/", function(req, res) {
     console.log(customerInformation);
     ReservationArray.push(customerInformation);
     console.log(ReservationArray);
-    res.json(customerInformation);
+    res.json(ReservationArray);
   });
 
   app.listen(PORT, function() {
