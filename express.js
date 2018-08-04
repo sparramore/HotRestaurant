@@ -11,7 +11,14 @@ var PORT = 3000;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-var TablesArray = [];
+var TablesArray = [
+  {
+    name: "John Doe",
+    phone: "555-1111",
+    email: "john@doe.com",
+    uniqueId: "001"
+  }
+];
 var ReservationArray = [];
 
 app.get("/api/TablesArray", function(req, res) {
@@ -32,6 +39,14 @@ app.get("/", function(req, res) {
   
   app.get("/tables", function(req, res) {
     res.sendFile(path.join(__dirname, "tables.html"));
+  });
+
+  app.post("/api/TablesArray/", function(req, res) {
+    var customerInformation = req.body;
+    console.log(customerInformation);
+    TablesArray.push(customerInformation);
+    console.log(TablesArray);
+    res.json(customerInformation);
   });
 
   app.listen(PORT, function() {
