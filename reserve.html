@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery.js"></script>
     <title>Reservation</title>
 </head>
 <body>
@@ -14,8 +15,8 @@
             <div class="col text-center">
                 <h1 class="display-4 text-center">Hot Restaurant</h1>
                 <p class="lead text-center">Make your reservation</p>
-                <a class="btn btn-primary btn-lg" href="#" role="button">View tables</a>
-                <a class="btn btn-light btn-lg" href="#" role="button">Home</a>
+                <a class="btn btn-primary btn-lg" href="/tables" role="button">View tables</a>
+                <a class="btn btn-light btn-lg" href="/" role="button">Home</a>
             </div>
         </div>
     </div>
@@ -48,6 +49,30 @@
           </div>
     
     </div>
+
+    <script type="text/javascript">
+        $("#submitButton").on("click", function() {
+            var currentTables = $.get("/api/TablesArray/");
+            console.log(currentTables);
+            var CustomerInformation = [
+                {
+                    name = $("#name"),
+                    phone = $("#phone"),
+                    email = $("#email1"),
+                    uniqueID = $("#uniqueID")
+                }
+            ]
+            //if there are less than five tables then add ourselves to the table list
+            if(currentTables.length < 5)
+            {
+                $.post("/api/TablesArray/",CustomerInformation);
+            }
+            else
+            {
+                $.post("/api/ReservationArray/",CustomerInformation);
+            }
+        });
+    </script>
     
 </body>
 </html>
