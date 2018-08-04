@@ -51,7 +51,7 @@
         var currentURL = window.location.origin;
         $.ajax({ url: currentURL + "/api/TablesArray", method: "GET" })
             .done(function (tableData) {
-
+                console.log(tableData);
                 for (var i = 0; i < tableData.length; i++) {
 
                     var tableSection = $("<div>");
@@ -61,7 +61,7 @@
 
                     var tableNumber = i + 1;
 
-                    $("#curTable-" + i + 1).append('<h2><span class="label label-primary">' + tableNumber + "</span> | " + tableData[i].customerID + "</h2>");
+                    $("#curTable-" + i + 1).append('<h2><span class="label label-primary">' + tableNumber + "</span> | " + tableData[i].uniqueID + "</h2>");
                 }
 
             });
@@ -82,7 +82,7 @@
 
                     var tableNumber = i + 1;
 
-                    $("#curWait-" + i + 1).append('<h2><span class="label label-primary">' + tableNumber + "</span> | " + waitlistData[i].customerID + "</h2>");
+                    $("#curWait-" + i + 1).append('<h2><span class="label label-primary">' + tableNumber + "</span> | " + waitlistData[i].uniqueID + "</h2>");
                 }
 
 

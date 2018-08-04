@@ -49,6 +49,14 @@ app.get("/", function(req, res) {
     res.json(customerInformation);
   });
 
+  app.post("/api/ReservationArray/", function(req, res) {
+    var customerInformation = req.body;
+    console.log(customerInformation);
+    ReservationArray.push(customerInformation);
+    console.log(ReservationArray);
+    res.json(customerInformation);
+  });
+
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });

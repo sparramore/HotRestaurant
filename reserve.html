@@ -52,8 +52,12 @@
 
     <script type="text/javascript">
         $("#submitButton").on("click", function() {
-            var currentTables = $.get("/api/TablesArray/");
-            console.log(currentTables);
+
+            var currentURL = window.location.origin;
+            event.preventDefault();
+            $.ajax({ url: currentURL + "/api/TablesArray", method: "GET" })
+            .done(function (currentTables) {
+            console.log("Test " + currentTables);
             var CustomerInformation = [
                 {
                     name: $("#name"),
@@ -71,6 +75,8 @@
             {
                 $.post("/api/ReservationArray/",CustomerInformation);
             }
+            });
+
         });
     </script>
     
